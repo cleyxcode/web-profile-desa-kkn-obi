@@ -41,12 +41,12 @@ return new class extends Migration
             $table->integer('jumlah_posyandu')->default(0);
             
             // Data Produk Unggulan
-            $table->json('produk_unggulan')->nullable();
+            $table->string('produk_unggulan')->nullable();
             
             // Data Ekonomi & Wilayah
             $table->text('mata_pencaharian_utama')->nullable();
             $table->decimal('luas_wilayah', 10, 2)->nullable(); // dalam hektar
-            $table->json('batas_wilayah')->nullable(); // UBAH dari text ke json
+            $table->string('batas_wilayah')->nullable(); // UBAH dari text ke json
             
             $table->timestamps();
         });
