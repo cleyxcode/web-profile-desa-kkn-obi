@@ -12,7 +12,7 @@
     </div>
     
     @if($profilDesa && $profilDesa->banner)
-        <img src="{{ asset('storage/' . $profilDesa->banner) }}" alt="Banner {{ $profilDesa->nama_desa }}" class="absolute inset-0 w-full h-full object-cover opacity-20">
+        <img src="/storage/profil-desa/{{ basename($profilDesa->banner) }}" alt="Banner {{ $profilDesa->nama_desa }}" class="absolute inset-0 w-full h-full object-cover opacity-20">
     @endif
     
     <div class="relative z-10 min-h-[600px] flex items-center py-20">
@@ -170,7 +170,7 @@
                 <div class="relative">
                     <div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-blue-400 rounded-2xl transform rotate-3"></div>
                     @if($profilDesa->foto_kepala_desa)
-                        <img src="{{ asset('storage/' . $profilDesa->foto_kepala_desa) }}" alt="{{ $profilDesa->nama_kepala_desa }}" class="relative w-80 h-80 rounded-2xl object-cover shadow-2xl">
+                        <img src="/storage/profil-desa/{{ basename($profilDesa->foto_kepala_desa) }}" alt="{{ $profilDesa->nama_kepala_desa }}" class="relative w-80 h-80 rounded-2xl object-cover shadow-2xl">
                     @else
                         <div class="relative w-80 h-80 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center shadow-2xl">
                             <svg class="w-40 h-40 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
@@ -328,7 +328,7 @@
                 <!-- Gambar Berita -->
                 <div class="relative overflow-hidden h-56">
                     @if($berita->gambar)
-                        <img src="{{ asset('storage/' . $berita->gambar) }}" alt="{{ $berita->judul }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img src="/storage/berita/{{ basename($berita->gambar) }}" alt="{{ $berita->judul }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     @else
                         <div class="w-full h-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
                             <svg class="w-20 h-20 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
@@ -386,7 +386,7 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             @foreach($galeriHighlight as $item)
             <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 aspect-square">
-                <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <img src="/storage/galeri/{{ basename($item->gambar) }}" alt="{{ $item->judul }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                         <h3 class="text-white font-bold text-lg">{{ $item->judul }}</h3>
