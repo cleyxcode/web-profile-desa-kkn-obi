@@ -1,36 +1,33 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfilDesaController;
 use Illuminate\Support\Facades\Route;
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Route untuk halaman lain (sementara gunakan placeholder atau buat nanti)
-Route::get('/profil-desa', function () {
-    return 'Halaman Profil Desa - Akan dibuat selanjutnya';
-})->name('profil-desa');
+// Profil Desa Routes
+Route::get('/profil-desa', [ProfilDesaController::class, 'index'])->name('profil-desa');
+Route::get('/profil-desa/{section}', [ProfilDesaController::class, 'show'])->name('profil-desa.show');
 
-Route::get('/berita', function () {
-    return 'Halaman Berita - Akan dibuat selanjutnya';
+// Route lainnya (sementara redirect ke home)
+Route::get('/berita', function() {
+    return redirect()->route('home')->with('info', 'Halaman berita sedang dalam pengembangan.');
 })->name('berita.index');
 
-Route::get('/berita/{id}', function () {
-    return 'Halaman Detail Berita - Akan dibuat selanjutnya';
-})->name('berita.show');
-
-Route::get('/galeri', function () {
-    return 'Halaman Galeri - Akan dibuat selanjutnya';
+Route::get('/galeri', function() {
+    return redirect()->route('home')->with('info', 'Halaman galeri sedang dalam pengembangan.');
 })->name('galeri');
 
-Route::get('/data-desa', function () {
-    return 'Halaman Data Desa - Akan dibuat selanjutnya';
+Route::get('/data-desa', function() {
+    return redirect()->route('home')->with('info', 'Halaman data desa sedang dalam pengembangan.');
 })->name('data-desa');
 
-Route::get('/potensi-desa', function () {
-    return 'Halaman Potensi Desa - Akan dibuat selanjutnya';
+Route::get('/potensi-desa', function() {
+    return redirect()->route('home')->with('info', 'Halaman potensi desa sedang dalam pengembangan.');
 })->name('potensi-desa');
 
-Route::get('/kontak', function () {
-    return 'Halaman Kontak - Akan dibuat selanjutnya';
+Route::get('/kontak', function() {
+    return redirect()->route('home')->with('info', 'Halaman kontak sedang dalam pengembangan.');
 })->name('kontak');

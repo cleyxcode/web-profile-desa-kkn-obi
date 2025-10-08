@@ -24,5 +24,14 @@ class AppServiceProvider extends ServiceProvider
             $profilDesa = ProfilDesa::published()->first();
             $view->with('profilDesa', $profilDesa);
         });
+         View::composer('*', function ($view) {
+            $profilDesa = ProfilDesa::where('is_published', true)->first();
+            
+            if (!$profilDesa) {
+                $profilDesa = ProfilDesa::first();
+            }
+            
+            $view->with('profilDesa', $profilDesa);
+        });
     }
 }
