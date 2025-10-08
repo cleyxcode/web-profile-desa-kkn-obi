@@ -22,7 +22,7 @@ class ProfilDesaSeeder extends Seeder
             'kode_pos' => '97782',
             'alamat' => 'Jl. Trans Obi',
             'email' => 'desa.ocimalaleo@gmail.com',
-            'kontak' => '082198765432', // Pakai 'kontak', bukan 'telepon'
+            'kontak' => '082198765432',
             'website' => 'https://ocimalaleo-desa.id',
             'tagline' => 'Desa Maju, Mandiri, dan Sejahtera',
             
@@ -33,21 +33,19 @@ class ProfilDesaSeeder extends Seeder
             'masa_jabatan_mulai' => '2021-08-17',
             'masa_jabatan_selesai' => '2027-08-16',
             
-            // Sambutan (opsional)
+            // Sambutan
             'sambutan_kepala_desa' => 'Assalamualaikum Warahmatullahi Wabarakatuh. Selamat datang di website resmi Desa Ocimalaleo. Semoga website ini dapat memberikan informasi yang bermanfaat bagi masyarakat dan meningkatkan transparansi pemerintahan desa.',
             
-            // Visi Misi
+            // Visi dan Misi
             'visi' => 'Terwujudnya Desa Ocimalaleo yang Maju, Mandiri, Sejahtera, dan Berbudaya Berbasis Potensi Lokal',
-            'misi' => json_encode([
-                'Meningkatkan kualitas pelayanan publik yang profesional dan transparan',
-                'Mengembangkan potensi ekonomi lokal berbasis pertanian, perikanan, dan pariwisata',
-                'Meningkatkan kualitas pendidikan dan kesehatan masyarakat',
-                'Memperkuat nilai-nilai budaya lokal dan kearifan lokal',
-                'Mengembangkan infrastruktur desa yang berkelanjutan',
-                'Memberdayakan masyarakat melalui pelatihan dan pendampingan'
-            ]),
+            'misi' => '1. Meningkatkan kualitas pelayanan publik yang profesional dan transparan.
+2. Mengembangkan potensi ekonomi lokal berbasis pertanian, perikanan, dan pariwisata.
+3. Meningkatkan kualitas pendidikan dan kesehatan masyarakat.
+4. Memperkuat nilai-nilai budaya lokal dan kearifan lokal.
+5. Mengembangkan infrastruktur desa yang berkelanjutan.
+6. Memberdayakan masyarakat melalui pelatihan dan pendampingan.',
             
-            // Sejarah (gunakan 'sejarah', bukan 'sejarah_singkat')
+            // Sejarah
             'sejarah' => 'Desa Ocimalaleo merupakan salah satu desa di Pulau Obi, Kabupaten Halmahera Selatan. Nama Ocimalaleo berasal dari bahasa lokal yang berarti "Air Jernih yang Mengalir". Desa ini didirikan pada tahun 1965 oleh sekelompok masyarakat yang bermigrasi dari pulau-pulau sekitar. Seiring perkembangan waktu, Desa Ocimalaleo berkembang menjadi pusat aktivitas ekonomi dan sosial di wilayah Pulau Obi bagian selatan.',
             
             // Wilayah Administratif
@@ -74,15 +72,9 @@ class ProfilDesaSeeder extends Seeder
             'video_profil_deskripsi' => 'Video profil Desa Ocimalaleo yang menampilkan keindahan alam dan potensi desa',
             
             // Galeri
-            'galeri' => json_encode([
-                'kantor-desa.jpg',
-                'pantai-ocimalaleo.jpg',
-                'pertanian-pala.jpg',
-                'upacara-adat.jpg',
-                'pelabuhan-nelayan.jpg'
-            ]),
+            'galeri' => 'kantor-desa.jpg, pantai-ocimalaleo.jpg, pertanian-pala.jpg, upacara-adat.jpg, pelabuhan-nelayan.jpg',
             
-            // Media/Images (opsional)
+            // Media/Images
             'banner' => null,
             'logo_desa' => null,
             'struktur_image' => null,

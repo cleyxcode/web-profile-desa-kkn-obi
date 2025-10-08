@@ -24,85 +24,37 @@ class DataDesaSeeder extends Seeder
             
             // 🏫 Fasilitas Pendidikan
             'jumlah_sd' => 2,
-            'nama_sd' => json_encode(['SD Negeri 1 Ocimalaleo', 'SD Negeri 2 Ocimalaleo']),
+            'nama_sd' => 'SD Negeri 1 Ocimalaleo, SD Negeri 2 Ocimalaleo',
             'jumlah_smp' => 1,
-            'nama_smp' => json_encode(['SMP Negeri 1 Obi']),
+            'nama_smp' => 'SMP Negeri 1 Obi',
             'jumlah_sma' => 1,
-            'nama_sma' => json_encode(['SMA Negeri 1 Obi']),
+            'nama_sma' => 'SMA Negeri 1 Obi',
             
             // ⛪ Tempat Ibadah
             'jumlah_gereja' => 2,
-            'nama_gereja' => json_encode([
-                'Gereja Protestan Maluku (GPM) Ocimalaleo',
-                'Gereja Katolik Santo Yoseph'
-            ]),
+            'nama_gereja' => 'Gereja Protestan Maluku (GPM) Ocimalaleo, Gereja Katolik Santo Yoseph',
             'jumlah_masjid' => 3,
-            'nama_masjid' => json_encode([
-                'Masjid Al-Ikhlas',
-                'Masjid Nurul Huda',
-                'Masjid Baitul Amin'
-            ]),
+            'nama_masjid' => 'Masjid Al-Ikhlas, Masjid Nurul Huda, Masjid Baitul Amin',
             
             // 🏥 Fasilitas Kesehatan
             'jumlah_puskesmas' => 1,
-            'nama_puskesmas' => json_encode(['Puskesmas Pembantu Ocimalaleo']),
+            'nama_puskesmas' => 'Puskesmas Pembantu Ocimalaleo',
             'jumlah_posyandu' => 4,
             
             // 🌍 Data Wilayah
             'luas_wilayah' => 12.45,
-            'batas_wilayah' => json_encode([
-                'Utara' => 'Desa Kawasi',
-                'Selatan' => 'Laut Maluku',
-                'Timur' => 'Desa Wayaloar',
-                'Barat' => 'Selat Obi',
-            ]),
+            'batas_wilayah' => 'Utara: Desa Kawasi, Selatan: Laut Maluku, Timur: Desa Wayaloar, Barat: Selat Obi',
             'mata_pencaharian_utama' => 'Pertanian (kelapa, pala, cengkeh), Perikanan, dan Perdagangan',
             
             // 🏆 Produk Unggulan
-            'produk_unggulan' => json_encode([
-                [
-                    'nama_produk' => 'Kelapa',
-                    'kategori' => 'Pertanian',
-                    'deskripsi' => 'Kelapa berkualitas tinggi dengan hasil melimpah.',
-                    'gambar' => 'produk/kelapa.jpg',
-                    'is_active' => true
-                ],
-                [
-                    'nama_produk' => 'Pala',
-                    'kategori' => 'Pertanian',
-                    'deskripsi' => 'Pala premium khas Maluku dengan aroma khas.',
-                    'gambar' => 'produk/pala.jpg',
-                    'is_active' => true
-                ],
-                [
-                    'nama_produk' => 'Cengkeh',
-                    'kategori' => 'Pertanian',
-                    'deskripsi' => 'Cengkeh asli Maluku berkualitas ekspor.',
-                    'gambar' => 'produk/cengkeh.jpg',
-                    'is_active' => true
-                ],
-                [
-                    'nama_produk' => 'Ikan Laut Segar',
-                    'kategori' => 'Perikanan',
-                    'deskripsi' => 'Hasil tangkapan segar dari laut Maluku.',
-                    'gambar' => 'produk/ikan-laut.jpg',
-                    'is_active' => true
-                ],
-                [
-                    'nama_produk' => 'Kerajinan Anyaman',
-                    'kategori' => 'Kerajinan',
-                    'deskripsi' => 'Kerajinan tangan anyaman dari bahan lokal.',
-                    'gambar' => 'produk/anyaman.jpg',
-                    'is_active' => true
-                ],
-                [
-                    'nama_produk' => 'Madu Hutan',
-                    'kategori' => 'Hasil Hutan',
-                    'deskripsi' => 'Madu asli dari hutan Pulau Obi.',
-                    'gambar' => 'produk/madu.jpg',
-                    'is_active' => true
-                ],
-            ]),
+            'produk_unggulan' => '
+                1. Kelapa - Pertanian - Kelapa berkualitas tinggi dengan hasil melimpah - produk/kelapa.jpg
+                2. Pala - Pertanian - Pala premium khas Maluku dengan aroma khas - produk/pala.jpg
+                3. Cengkeh - Pertanian - Cengkeh asli Maluku berkualitas ekspor - produk/cengkeh.jpg
+                4. Ikan Laut Segar - Perikanan - Hasil tangkapan segar dari laut Maluku - produk/ikan-laut.jpg
+                5. Kerajinan Anyaman - Kerajinan - Kerajinan tangan anyaman dari bahan lokal - produk/anyaman.jpg
+                6. Madu Hutan - Hasil Hutan - Madu asli dari hutan Pulau Obi - produk/madu.jpg
+            ',
             
             'created_at' => now(),
             'updated_at' => now(),
