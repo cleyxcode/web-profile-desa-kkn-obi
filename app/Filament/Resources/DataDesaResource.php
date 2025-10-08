@@ -387,7 +387,7 @@ class DataDesaResource extends Resource
                 Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
-                // Tidak ada bulk action karena hanya 1 record
+                
             ])
             ->emptyStateHeading('Data desa belum tersedia')
             ->emptyStateDescription('Silakan tambahkan data desa.')
