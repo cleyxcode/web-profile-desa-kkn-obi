@@ -12,155 +12,96 @@ class DataDesaSeeder extends Seeder
      */
     public function run(): void
     {
-        // Hapus data default jika ada
+        // Hapus data lama agar tidak duplikat
         DB::table('data_desa')->truncate();
 
         DB::table('data_desa')->insert([
-            // Data Kependudukan
+            // 🧍‍♂️ Data Kependudukan
             'jumlah_penduduk' => 2456,
             'jumlah_kk' => 687,
-            'jumlah_pria' => 1268,
-            'jumlah_wanita' => 1188,
+            'jumlah_pria' => 1234,
+            'jumlah_wanita' => 1222,
             
-            // Data Pendidikan - SD
+            // 🏫 Fasilitas Pendidikan
             'jumlah_sd' => 2,
-            'nama_sd' => json_encode([
-                'SDN 1 Ocimalaleo',
-                'SDN 2 Ocimalaleo'
-            ]),
-            
-            // Data Pendidikan - SMP
+            'nama_sd' => json_encode(['SD Negeri 1 Ocimalaleo', 'SD Negeri 2 Ocimalaleo']),
             'jumlah_smp' => 1,
-            'nama_smp' => json_encode([
-                'SMPN 1 Obi'
-            ]),
-            
-            // Data Pendidikan - SMA
+            'nama_smp' => json_encode(['SMP Negeri 1 Obi']),
             'jumlah_sma' => 1,
-            'nama_sma' => json_encode([
-                'SMAN 1 Obi'
-            ]),
+            'nama_sma' => json_encode(['SMA Negeri 1 Obi']),
             
-            // Data Tempat Ibadah - Gereja
-            'jumlah_gereja' => 1,
+            // ⛪ Tempat Ibadah
+            'jumlah_gereja' => 2,
             'nama_gereja' => json_encode([
-                'Gereja Protestan Maluku (GPM) Ocimalaleo'
+                'Gereja Protestan Maluku (GPM) Ocimalaleo',
+                'Gereja Katolik Santo Yoseph'
             ]),
-            
-            // Data Tempat Ibadah - Masjid
             'jumlah_masjid' => 3,
             'nama_masjid' => json_encode([
-                'Masjid Al-Ikhlas Ocimalaleo',
-                'Masjid Nurul Huda Dusun Timur',
-                'Musholla Al-Barokah Dusun Selatan'
+                'Masjid Al-Ikhlas',
+                'Masjid Nurul Huda',
+                'Masjid Baitul Amin'
             ]),
             
-            // Data Fasilitas Kesehatan
+            // 🏥 Fasilitas Kesehatan
             'jumlah_puskesmas' => 1,
-            'nama_puskesmas' => json_encode([
-                'Puskesmas Pembantu Ocimalaleo'
-            ]),
+            'nama_puskesmas' => json_encode(['Puskesmas Pembantu Ocimalaleo']),
             'jumlah_posyandu' => 4,
             
-            // Data Produk Unggulan
+            // 🌍 Data Wilayah
+            'luas_wilayah' => 12.45,
+            'batas_wilayah' => json_encode([
+                'Utara' => 'Desa Kawasi',
+                'Selatan' => 'Laut Maluku',
+                'Timur' => 'Desa Wayaloar',
+                'Barat' => 'Selat Obi',
+            ]),
+            'mata_pencaharian_utama' => 'Pertanian (kelapa, pala, cengkeh), Perikanan, dan Perdagangan',
+            
+            // 🏆 Produk Unggulan
             'produk_unggulan' => json_encode([
                 [
-                    'nama' => 'Pala',
-                    'deskripsi' => 'Pala kering berkualitas ekspor dengan aroma khas',
-                    'produksi_per_tahun' => '45 ton',
-                    'kategori' => 'Pertanian'
+                    'nama_produk' => 'Kelapa',
+                    'kategori' => 'Pertanian',
+                    'deskripsi' => 'Kelapa berkualitas tinggi dengan hasil melimpah.',
+                    'gambar' => 'produk/kelapa.jpg',
+                    'is_active' => true
                 ],
                 [
-                    'nama' => 'Cengkeh',
-                    'deskripsi' => 'Cengkeh kering dengan kadar air rendah',
-                    'produksi_per_tahun' => '32 ton',
-                    'kategori' => 'Pertanian'
+                    'nama_produk' => 'Pala',
+                    'kategori' => 'Pertanian',
+                    'deskripsi' => 'Pala premium khas Maluku dengan aroma khas.',
+                    'gambar' => 'produk/pala.jpg',
+                    'is_active' => true
                 ],
                 [
-                    'nama' => 'Kelapa',
-                    'deskripsi' => 'Kelapa dalam dan kopra',
-                    'produksi_per_tahun' => '120 ton',
-                    'kategori' => 'Pertanian'
+                    'nama_produk' => 'Cengkeh',
+                    'kategori' => 'Pertanian',
+                    'deskripsi' => 'Cengkeh asli Maluku berkualitas ekspor.',
+                    'gambar' => 'produk/cengkeh.jpg',
+                    'is_active' => true
                 ],
                 [
-                    'nama' => 'Ikan Cakalang',
-                    'deskripsi' => 'Ikan cakalang segar dan olahan',
-                    'produksi_per_tahun' => '80 ton',
-                    'kategori' => 'Perikanan'
+                    'nama_produk' => 'Ikan Laut Segar',
+                    'kategori' => 'Perikanan',
+                    'deskripsi' => 'Hasil tangkapan segar dari laut Maluku.',
+                    'gambar' => 'produk/ikan-laut.jpg',
+                    'is_active' => true
                 ],
                 [
-                    'nama' => 'Ikan Tuna',
-                    'deskripsi' => 'Ikan tuna berkualitas ekspor',
-                    'produksi_per_tahun' => '65 ton',
-                    'kategori' => 'Perikanan'
+                    'nama_produk' => 'Kerajinan Anyaman',
+                    'kategori' => 'Kerajinan',
+                    'deskripsi' => 'Kerajinan tangan anyaman dari bahan lokal.',
+                    'gambar' => 'produk/anyaman.jpg',
+                    'is_active' => true
                 ],
                 [
-                    'nama' => 'Kerajinan Anyaman Bambu',
-                    'deskripsi' => 'Produk anyaman bambu seperti bakul, nyiru, dan tikar',
-                    'produksi_per_tahun' => '500 unit',
-                    'kategori' => 'UMKM'
+                    'nama_produk' => 'Madu Hutan',
+                    'kategori' => 'Hasil Hutan',
+                    'deskripsi' => 'Madu asli dari hutan Pulau Obi.',
+                    'gambar' => 'produk/madu.jpg',
+                    'is_active' => true
                 ],
-                [
-                    'nama' => 'Abon Ikan',
-                    'deskripsi' => 'Abon ikan cakalang dan tongkol',
-                    'produksi_per_tahun' => '1200 kg',
-                    'kategori' => 'UMKM'
-                ],
-                [
-                    'nama' => 'Dodol Pala',
-                    'deskripsi' => 'Oleh-oleh khas desa berbahan pala',
-                    'produksi_per_tahun' => '800 kg',
-                    'kategori' => 'UMKM'
-                ]
-            ]),
-            
-            // Data Ekonomi
-            'mata_pencaharian_utama' => json_encode([
-                [
-                    'jenis' => 'Petani',
-                    'jumlah' => 312,
-                    'persentase' => 45.4
-                ],
-                [
-                    'jenis' => 'Nelayan',
-                    'jumlah' => 189,
-                    'persentase' => 27.5
-                ],
-                [
-                    'jenis' => 'Pedagang',
-                    'jumlah' => 98,
-                    'persentase' => 14.3
-                ],
-                [
-                    'jenis' => 'PNS/ASN',
-                    'jumlah' => 45,
-                    'persentase' => 6.5
-                ],
-                [
-                    'jenis' => 'Wiraswasta',
-                    'jumlah' => 28,
-                    'persentase' => 4.1
-                ],
-                [
-                    'jenis' => 'Lainnya',
-                    'jumlah' => 15,
-                    'persentase' => 2.2
-                ]
-            ]),
-            
-            // Data Geografis
-            'luas_wilayah' => 1245.50, // dalam hektar
-            'batas_wilayah' => json_encode([
-                'utara' => 'Desa Kawasi',
-                'selatan' => 'Laut Maluku',
-                'timur' => 'Desa Wayaloar',
-                'barat' => 'Selat Obi',
-                'detail' => [
-                    'ketinggian' => '0 - 150 mdpl',
-                    'topografi' => 'Dataran rendah dengan perbukitan kecil',
-                    'jenis_tanah' => 'Tanah laterit dan alluvial',
-                    'iklim' => 'Tropis dengan curah hujan 2000-3000 mm/tahun'
-                ]
             ]),
             
             'created_at' => now(),

@@ -26,7 +26,7 @@ return new class extends Migration
             $table->text('nama_sd')->nullable();
             $table->integer('jumlah_smp')->default(0);
             $table->text('nama_smp')->nullable();
-            $table->integer('jumlah_sma')->default(0); // Tambahan SMA
+            $table->integer('jumlah_sma')->default(0);
             $table->text('nama_sma')->nullable();
             
             // Data Tempat Ibadah
@@ -35,38 +35,24 @@ return new class extends Migration
             $table->integer('jumlah_masjid')->default(0);
             $table->text('nama_masjid')->nullable();
             
-            // Data Fasilitas Umum (Tambahan)
+            // Data Fasilitas Kesehatan
             $table->integer('jumlah_puskesmas')->default(0);
             $table->text('nama_puskesmas')->nullable();
             $table->integer('jumlah_posyandu')->default(0);
             
             // Data Produk Unggulan
-            $table->json('produk_unggulan')->nullable(); // Array produk unggulan
+            $table->json('produk_unggulan')->nullable();
             
-            // Data Ekonomi
+            // Data Ekonomi & Wilayah
             $table->text('mata_pencaharian_utama')->nullable();
             $table->decimal('luas_wilayah', 10, 2)->nullable(); // dalam hektar
-            $table->text('batas_wilayah')->nullable(); // JSON untuk batas utara, selatan, timur, barat
+            $table->json('batas_wilayah')->nullable(); // UBAH dari text ke json
             
             $table->timestamps();
         });
 
-        // Insert default record
-        DB::table('data_desa')->insert([
-            'jumlah_penduduk' => 0,
-            'jumlah_kk' => 0,
-            'jumlah_pria' => 0,
-            'jumlah_wanita' => 0,
-            'jumlah_sd' => 0,
-            'jumlah_smp' => 0,
-            'jumlah_sma' => 0,
-            'jumlah_gereja' => 0,
-            'jumlah_masjid' => 0,
-            'jumlah_puskesmas' => 0,
-            'jumlah_posyandu' => 0,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        // HAPUS insert default record dari migration
+        // Biarkan seeder yang handle ini
     }
 
     /**
