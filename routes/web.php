@@ -29,7 +29,6 @@ Route::get('/data-desa', [DataDesaController::class, 'index'])->name('data-desa'
 Route::get('/potensi-desa', [DataDesaController::class, 'potensiDesa'])->name('potensi-desa');
 Route::get('/potensi-desa/{index}', [DataDesaController::class, 'showProduk'])->name('potensi-desa.show');
 
-// Temporary Routes (Under Development)
-Route::get('/kontak', function() {
-    return redirect()->route('home')->with('info', 'Halaman kontak sedang dalam pengembangan.');
-})->name('kontak');
+// Kontak Routes
+Route::get('/kontak', [App\Http\Controllers\KontakController::class, 'index'])->name('kontak');
+Route::post('/kontak', [App\Http\Controllers\KontakController::class, 'store'])->name('kontak.store');
