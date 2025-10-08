@@ -41,7 +41,7 @@ return new class extends Migration
             $table->integer('jumlah_posyandu')->default(0);
             
             // Data Produk Unggulan
-            $table->string('produk_unggulan')->nullable();
+            $table->longText('produk_unggulan')->nullable();
             
             // Data Ekonomi & Wilayah
             $table->text('mata_pencaharian_utama')->nullable();
