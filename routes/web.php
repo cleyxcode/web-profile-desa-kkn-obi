@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfilDesaController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\DataDesaController;
 use Illuminate\Support\Facades\Route;
 
 // Home
@@ -12,21 +15,21 @@ Route::get('/profil-desa', [ProfilDesaController::class, 'index'])->name('profil
 Route::get('/profil-desa/{section}', [ProfilDesaController::class, 'show'])->name('profil-desa.show');
 
 // Berita Routes
-Route::get('/berita', [App\Http\Controllers\BeritaController::class, 'index'])->name('berita.index');
-Route::get('/berita/{id}', [App\Http\Controllers\BeritaController::class, 'show'])->name('berita.show');
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
+Route::get('/berita/{id}', [BeritaController::class, 'show'])->name('berita.show');
 
-Route::get('/galeri', function() {
-    return redirect()->route('home')->with('info', 'Halaman galeri sedang dalam pengembangan.');
-})->name('galeri');
+// Galeri Routes
+Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri');
+Route::get('/galeri/{id}', [GaleriController::class, 'show'])->name('galeri.show');
 
-Route::get('/data-desa', function() {
-    return redirect()->route('home')->with('info', 'Halaman data desa sedang dalam pengembangan.');
-})->name('data-desa');
+// Data Desa Routes
+Route::get('/data-desa', [DataDesaController::class, 'index'])->name('data-desa');
 
-Route::get('/potensi-desa', function() {
-    return redirect()->route('home')->with('info', 'Halaman potensi desa sedang dalam pengembangan.');
-})->name('potensi-desa');
+// Potensi Desa Routes
+Route::get('/potensi-desa', [DataDesaController::class, 'potensiDesa'])->name('potensi-desa');
+Route::get('/potensi-desa/{index}', [DataDesaController::class, 'showProduk'])->name('potensi-desa.show');
 
+// Temporary Routes (Under Development)
 Route::get('/kontak', function() {
     return redirect()->route('home')->with('info', 'Halaman kontak sedang dalam pengembangan.');
 })->name('kontak');
