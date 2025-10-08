@@ -7,7 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Website Desa')</title>
     
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Optional: custom konfigurasi warna -->
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#1E3A8A',
+                    secondary: '#2563EB',
+                },
+            },
+        },
+    }
+</script>
+
     
     <style>
         [x-cloak] { display: none !important; }
