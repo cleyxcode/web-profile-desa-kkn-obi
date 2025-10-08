@@ -44,7 +44,7 @@ return new class extends Migration
             // Media & Banner
             $table->string('banner')->nullable();
             $table->string('logo_desa')->nullable();
-            $table->json('galeri')->nullable(); // Array foto-foto desa
+            $table->text('galeri')->nullable(); // Array foto-foto desa
             
             // Video Profil
             $table->string('video_profil_url')->nullable(); // URL YouTube
