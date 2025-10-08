@@ -11,10 +11,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/profil-desa', [ProfilDesaController::class, 'index'])->name('profil-desa');
 Route::get('/profil-desa/{section}', [ProfilDesaController::class, 'show'])->name('profil-desa.show');
 
-// Route lainnya (sementara redirect ke home)
-Route::get('/berita', function() {
-    return redirect()->route('home')->with('info', 'Halaman berita sedang dalam pengembangan.');
-})->name('berita.index');
+// Berita Routes
+Route::get('/berita', [App\Http\Controllers\BeritaController::class, 'index'])->name('berita.index');
+Route::get('/berita/{id}', [App\Http\Controllers\BeritaController::class, 'show'])->name('berita.show');
 
 Route::get('/galeri', function() {
     return redirect()->route('home')->with('info', 'Halaman galeri sedang dalam pengembangan.');
