@@ -7,6 +7,95 @@ use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\DataDesaController;
 use Illuminate\Support\Facades\Route;
 
+// Route untuk serve storage files - solusi untuk masalah 403/404
+// Route khusus untuk galeri
+Route::get('/storage/galeri/{filename}', function ($filename) {
+    $path = storage_path('app/public/galeri/' . $filename);
+    
+    if (!file_exists($path)) {
+        abort(404, 'File not found: ' . $filename);
+    }
+    
+    $mimeType = mime_content_type($path);
+    $headers = [
+        'Content-Type' => $mimeType,
+        'Cache-Control' => 'public, max-age=86400',
+        'Access-Control-Allow-Origin' => '*',
+    ];
+    
+    return response()->file($path, $headers);
+})->where('filename', '[a-zA-Z0-9._-]+');
+
+// Route khusus untuk berita (jika ada upload gambar di berita)
+Route::get('/storage/berita/{filename}', function ($filename) {
+    $path = storage_path('app/public/berita/' . $filename);
+    
+    if (!file_exists($path)) {
+        abort(404, 'File not found: ' . $filename);
+    }
+    
+    $mimeType = mime_content_type($path);
+    $headers = [
+        'Content-Type' => $mimeType,
+        'Cache-Control' => 'public, max-age=86400',
+        'Access-Control-Allow-Origin' => '*',
+    ];
+    
+    return response()->file($path, $headers);
+})->where('filename', '[a-zA-Z0-9._-]+');
+
+// Route khusus untuk profil desa (jika ada upload gambar)
+Route::get('/storage/profil-desa/{filename}', function ($filename) {
+    $path = storage_path('app/public/profil-desa/' . $filename);
+    
+    if (!file_exists($path)) {
+        abort(404, 'File not found: ' . $filename);
+    }
+    
+    $mimeType = mime_content_type($path);
+    $headers = [
+        'Content-Type' => $mimeType,
+        'Cache-Control' => 'public, max-age=86400',
+        'Access-Control-Allow-Origin' => '*',
+    ];
+    
+    return response()->file($path, $headers);
+})->where('filename', '[a-zA-Z0-9._-]+');
+
+// Route khusus untuk potensi desa (jika ada upload gambar produk)
+Route::get('/storage/potensi-desa/{filename}', function ($filename) {
+    $path = storage_path('app/public/potensi-desa/' . $filename);
+    
+    if (!file_exists($path)) {
+        abort(404, 'File not found: ' . $filename);
+    }
+    
+    $mimeType = mime_content_type($path);
+    $headers = [
+        'Content-Type' => $mimeType,
+        'Cache-Control' => 'public, max-age=86400',
+        'Access-Control-Allow-Origin' => '*',
+    ];
+    
+    return response()->file($path, $headers);
+})->where('filename', '[a-zA-Z0-9._-]+');
+
+// Route umum untuk semua storage files (fallback) - HARUS DI PALING BAWAH
+Route::get('/storage/{path}', function ($path) {
+    $fullPath = storage_path('app/public/' . $path);
+    
+    if (!file_exists($fullPath)) {
+        abort(404, 'File not found: ' . $path);
+    }
+    
+    $mimeType = mime_content_type($fullPath);
+    return response()->file($fullPath, [
+        'Content-Type' => $mimeType,
+        'Cache-Control' => 'public, max-age=86400',
+        'Access-Control-Allow-Origin' => '*',
+    ]);
+})->where('path', '.*');
+
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
