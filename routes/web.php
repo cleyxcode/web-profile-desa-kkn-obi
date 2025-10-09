@@ -5,111 +5,32 @@ use App\Http\Controllers\ProfilDesaController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\DataDesaController;
+use App\Http\Controllers\StorageController;
 use Illuminate\Support\Facades\Route;
 
-// Route untuk serve storage files - solusi untuk masalah 403/404
-// Route khusus untuk galeri
-Route::get('/storage/galeri/{filename}', function ($filename) {
-    $path = storage_path('app/public/galeri/' . $filename);
-    
-    if (!file_exists($path)) {
-        abort(404, 'File not found: ' . $filename);
-    }
-    
-    $mimeType = mime_content_type($path);
-    $headers = [
-        'Content-Type' => $mimeType,
-        'Cache-Control' => 'public, max-age=86400',
-        'Access-Control-Allow-Origin' => '*',
-    ];
-    
-    return response()->file($path, $headers);
-})->where('filename', '[a-zA-Z0-9._-]+\.(jpg|jpeg|png|gif|webp|svg)');
+// ==========================================
+// STORAGE ROUTES - HARUS DI PALING ATAS!
+// ==========================================
 
-// Route khusus untuk berita (jika ada upload gambar di berita)
-Route::get('/storage/berita/{filename}', function ($filename) {
-    $path = storage_path('app/public/berita/' . $filename);
-    
-    if (!file_exists($path)) {
-        abort(404, 'File not found: ' . $filename);
-    }
-    
-    $mimeType = mime_content_type($path);
-    $headers = [
-        'Content-Type' => $mimeType,
-        'Cache-Control' => 'public, max-age=86400',
-        'Access-Control-Allow-Origin' => '*',
-    ];
-    
-    return response()->file($path, $headers);
-})->where('filename', '[a-zA-Z0-9._-]+\.(jpg|jpeg|png|gif|webp|svg)');
+// Endpoint untuk debugging storage (HAPUS DI PRODUCTION!)
+Route::get('/check-storage-debug', [StorageController::class, 'checkStorage']);
 
-// Route khusus untuk profil desa (jika ada upload gambar)
-Route::get('/storage/profil-desa/{filename}', function ($filename) {
-    $path = storage_path('app/public/profil-desa/' . $filename);
-    
-    if (!file_exists($path)) {
-        abort(404, 'File not found: ' . $filename);
-    }
-    
-    $mimeType = mime_content_type($path);
-    $headers = [
-        'Content-Type' => $mimeType,
-        'Cache-Control' => 'public, max-age=86400',
-        'Access-Control-Allow-Origin' => '*',
-    ];
-    
-    return response()->file($path, $headers);
-})->where('filename', '[a-zA-Z0-9._-]+\.(jpg|jpeg|png|gif|webp|svg)');
-
-// Route khusus untuk potensi desa (jika ada upload gambar produk)
-Route::get('/storage/potensi-desa/{filename}', function ($filename) {
-    $path = storage_path('app/public/potensi-desa/' . $filename);
-    
-    if (!file_exists($path)) {
-        abort(404, 'File not found: ' . $filename);
-    }
-    
-    $mimeType = mime_content_type($path);
-    $headers = [
-        'Content-Type' => $mimeType,
-        'Cache-Control' => 'public, max-age=86400',
-        'Access-Control-Allow-Origin' => '*',
-    ];
-    
-    return response()->file($path, $headers);
-})->where('filename', '[a-zA-Z0-9._-]+\.(jpg|jpeg|png|gif|webp|svg)');
-
-// Route umum untuk semua storage files (fallback) - HARUS DI PALING BAWAH
-Route::get('/storage/{path}', function ($path) {
-    $fullPath = storage_path('app/public/' . $path);
-    
-    if (!file_exists($fullPath)) {
-        abort(404, 'File not found: ' . $path);
-    }
-    
-    $mimeType = mime_content_type($fullPath);
-    return response()->file($fullPath, [
-        'Content-Type' => $mimeType,
-        'Cache-Control' => 'public, max-age=86400',
-        'Access-Control-Allow-Origin' => '*',
-    ]);
-})->where('path', '.*');
-
-Route::get('/storage/{folder}/{filename}', [App\Http\Controllers\StorageController::class, 'serve'])
+// Route untuk folder spesifik dengan controller
+Route::get('/storage/{folder}/{filename}', [StorageController::class, 'serve'])
     ->where([
-        'folder' => '(galeri|berita|profil-desa|potensi-desa)',
+        'folder' => 'galeri|berita|profil-desa|potensi-desa',
         'filename' => '[a-zA-Z0-9._-]+\.(jpg|jpeg|png|gif|webp|svg|JPG|JPEG|PNG|GIF)'
     ])
     ->name('storage.serve');
 
 // Route fallback untuk path lain di storage
-Route::get('/storage/{path}', [App\Http\Controllers\StorageController::class, 'serveAny'])
+Route::get('/storage/{path}', [StorageController::class, 'serveAny'])
     ->where('path', '.*')
     ->name('storage.any');
 
-// Endpoint untuk debugging storage (HAPUS DI PRODUCTION!)
-Route::get('/check-storage-debug', [App\Http\Controllers\StorageController::class, 'checkStorage']);
+// ==========================================
+// APPLICATION ROUTES
+// ==========================================
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
