@@ -96,6 +96,21 @@ Route::get('/storage/{path}', function ($path) {
     ]);
 })->where('path', '.*');
 
+Route::get('/storage/{folder}/{filename}', [App\Http\Controllers\StorageController::class, 'serve'])
+    ->where([
+        'folder' => '(galeri|berita|profil-desa|potensi-desa)',
+        'filename' => '[a-zA-Z0-9._-]+\.(jpg|jpeg|png|gif|webp|svg|JPG|JPEG|PNG|GIF)'
+    ])
+    ->name('storage.serve');
+
+// Route fallback untuk path lain di storage
+Route::get('/storage/{path}', [App\Http\Controllers\StorageController::class, 'serveAny'])
+    ->where('path', '.*')
+    ->name('storage.any');
+
+// Endpoint untuk debugging storage (HAPUS DI PRODUCTION!)
+Route::get('/check-storage-debug', [App\Http\Controllers\StorageController::class, 'checkStorage']);
+
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
