@@ -24,7 +24,7 @@ Route::get('/storage/galeri/{filename}', function ($filename) {
     ];
     
     return response()->file($path, $headers);
-})->where('filename', '[a-zA-Z0-9._-]+');
+})->where('filename', '[a-zA-Z0-9._-]+\.(jpg|jpeg|png|gif|webp|svg)');
 
 // Route khusus untuk berita (jika ada upload gambar di berita)
 Route::get('/storage/berita/{filename}', function ($filename) {
@@ -42,7 +42,7 @@ Route::get('/storage/berita/{filename}', function ($filename) {
     ];
     
     return response()->file($path, $headers);
-})->where('filename', '[a-zA-Z0-9._-]+');
+})->where('filename', '[a-zA-Z0-9._-]+\.(jpg|jpeg|png|gif|webp|svg)');
 
 // Route khusus untuk profil desa (jika ada upload gambar)
 Route::get('/storage/profil-desa/{filename}', function ($filename) {
@@ -60,7 +60,7 @@ Route::get('/storage/profil-desa/{filename}', function ($filename) {
     ];
     
     return response()->file($path, $headers);
-})->where('filename', '[a-zA-Z0-9._-]+');
+})->where('filename', '[a-zA-Z0-9._-]+\.(jpg|jpeg|png|gif|webp|svg)');
 
 // Route khusus untuk potensi desa (jika ada upload gambar produk)
 Route::get('/storage/potensi-desa/{filename}', function ($filename) {
@@ -78,7 +78,7 @@ Route::get('/storage/potensi-desa/{filename}', function ($filename) {
     ];
     
     return response()->file($path, $headers);
-})->where('filename', '[a-zA-Z0-9._-]+');
+})->where('filename', '[a-zA-Z0-9._-]+\.(jpg|jpeg|png|gif|webp|svg)');
 
 // Route umum untuk semua storage files (fallback) - HARUS DI PALING BAWAH
 Route::get('/storage/{path}', function ($path) {
